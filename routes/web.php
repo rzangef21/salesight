@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+// OWNER
+Route::get('/owner/dashboard', function () {
+    return view('owner.dashboard');
 });
