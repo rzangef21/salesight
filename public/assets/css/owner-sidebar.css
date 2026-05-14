@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: 0;
   width: 248px;
   height: 927px;
   align-items: flex-start;
@@ -10,7 +10,7 @@
 .container .sidebar {
   display: flex;
   flex-direction: column;
-  height: 927px;
+  min-height: 100vh;
   align-items: flex-start;
   position: relative;
   align-self: stretch;

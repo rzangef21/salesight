@@ -8,18 +8,17 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owner-sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owner-header.css') }}">
 </head>
 <body>
-
     <div class="layout-wrapper">
-
         @include('sidebar.owner-sidebar')
-
-        <main class="main-content">
-            @yield('content')
-        </main>
-
+        <div class="main-content">
+            @include('header.owner-header')
+            <main>
+                @yield('content')
+            </main>
+        </div>
     </div>
-
 </body>
 </html>
