@@ -1,0 +1,227 @@
+@extends('layouts.owner')
+
+@section('content')
+
+<div class="tren-toko-content">
+
+    <div class="tren-toko-section">
+
+        <!-- Header Page -->
+        <div class="tren-toko-page-header">
+            <div class="tren-toko-heading">
+                <div class="tren-toko-title">Tren Penjualan Toko</div>
+            </div>
+
+            <div class="tren-toko-paragraph">
+                <p class="tren-toko-subtitle">Analisis tren penjualan per cabang</p>
+            </div>
+        </div>
+
+        <!-- Chart Card -->
+        <div class="tren-toko-card">
+
+            <div class="tren-toko-card-header">
+                <div class="tren-toko-card-title-group">
+                    <div class="tren-toko-card-title-wrapper">
+                        <div class="tren-toko-card-title">Tren Penjualan per Toko</div>
+                    </div>
+
+                    <div class="tren-toko-card-subtitle-wrapper">
+                        <div class="tren-toko-card-subtitle">
+                            Perbandingan penjualan antar cabang
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tren-toko-chart-placeholder"></div>
+
+            <!-- Dropdown Filter -->
+            <div class="tren-toko-filter-frame">
+
+                <div class="tren-toko-filter-button">
+                    <div class="tren-toko-filter-icon">
+                        <img class="tren-toko-vector" src="{{ asset('img/toko.png') }}" alt="">
+                    </div>
+
+                    <div class="tren-toko-filter-text">
+                        <div class="tren-toko-filter-label">Semua Cabang</div>
+                    </div>
+
+                    <div class="tren-toko-filter-icon">
+                        <img class="tren-toko-vector-4" src="{{ asset('img/dropdown.png') }}" alt="">
+                    </div>
+                </div>
+
+                <div class="tren-toko-dropdown">
+                    <div class="tren-toko-dropdown-active">
+                        <div class="tren-toko-dot blue"></div>
+                        <div class="tren-toko-dropdown-active-text">Semua Cabang</div>
+
+                        <div class="tren-toko-check-wrapper">
+                            <img class="tren-toko-check" src="{{ asset('img/image.svg') }}" alt="">
+                        </div>
+                    </div>
+
+                    <div class="tren-toko-dropdown-item">
+                        <div class="tren-toko-dot blue"></div>
+                        <div class="tren-toko-dropdown-text">Toko Jakarta Pusat</div>
+                    </div>
+
+                    <div class="tren-toko-dropdown-item">
+                        <div class="tren-toko-dot green"></div>
+                        <div class="tren-toko-dropdown-text">Toko Bandung Kota</div>
+                    </div>
+
+                    <div class="tren-toko-dropdown-item">
+                        <div class="tren-toko-dot orange"></div>
+                        <div class="tren-toko-dropdown-text">Toko Surabaya</div>
+                    </div>
+
+                    <div class="tren-toko-dropdown-item">
+                        <div class="tren-toko-dot red"></div>
+                        <div class="tren-toko-dropdown-text">Toko Yogyakarta</div>
+                    </div>
+
+                    <div class="tren-toko-dropdown-item">
+                        <div class="tren-toko-dot purple"></div>
+                        <div class="tren-toko-dropdown-text">Toko Medan</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Bottom Cards -->
+        <div class="tren-toko-bottom-wrapper">
+
+            <!-- Status Cabang -->
+            <div class="tren-toko-status-card">
+
+                <div class="tren-toko-section-title-wrapper">
+                    <div class="tren-toko-section-title">Status Cabang</div>
+                </div>
+
+                <div class="tren-toko-status-list">
+
+                    <div class="tren-toko-status-item">
+                        <div class="tren-toko-status-dot blue"></div>
+
+                        <div class="tren-toko-status-name-wrapper">
+                            <div class="tren-toko-status-name">Toko Jakarta Pusat</div>
+                        </div>
+
+                        <div class="tren-toko-status-badge">
+                            <div class="tren-toko-status-text">● Aktif</div>
+                        </div>
+                    </div>
+
+                    <div class="tren-toko-status-item">
+                        <div class="tren-toko-status-dot green"></div>
+
+                        <div class="tren-toko-status-name-wrapper">
+                            <div class="tren-toko-status-name">Toko Bandung Kota</div>
+                        </div>
+
+                        <div class="tren-toko-status-badge">
+                            <div class="tren-toko-status-text">● Aktif</div>
+                        </div>
+                    </div>
+
+                    <div class="tren-toko-status-item">
+                        <div class="tren-toko-status-dot orange"></div>
+
+                        <div class="tren-toko-status-name-wrapper">
+                            <div class="tren-toko-status-name">Toko Surabaya</div>
+                        </div>
+
+                        <div class="tren-toko-status-badge">
+                            <div class="tren-toko-status-text">● Aktif</div>
+                        </div>
+                    </div>
+
+                    <div class="tren-toko-status-item">
+                        <div class="tren-toko-status-dot red"></div>
+
+                        <div class="tren-toko-status-name-wrapper">
+                            <div class="tren-toko-status-name">Toko Yogyakarta</div>
+                        </div>
+
+                        <div class="tren-toko-status-badge">
+                            <div class="tren-toko-status-text">● Aktif</div>
+                        </div>
+                    </div>
+
+                    <div class="tren-toko-status-item last">
+                        <div class="tren-toko-status-dot purple"></div>
+
+                        <div class="tren-toko-status-name-wrapper">
+                            <div class="tren-toko-status-name">Toko Medan</div>
+                        </div>
+
+                        <div class="tren-toko-status-badge">
+                            <div class="tren-toko-status-text">● Aktif</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Insight Toko -->
+            <div class="tren-toko-insight-card">
+
+                <div class="tren-toko-section-title-wrapper">
+                    <div class="tren-toko-section-title">Insight Toko</div>
+                </div>
+
+                <div class="tren-toko-insight-list">
+
+                    <div class="tren-toko-insight-box blue-box">
+
+                        <div class="tren-toko-insight-header">
+                            <div class="tren-toko-insight-icon-wrapper blue-icon">
+                                <div class="tren-toko-insight-icon">
+                                    <img class="tren-toko-vector" src="{{ asset('img/ptinggi.png') }}" alt="">
+                                </div>
+                            </div>
+
+                            <div class="tren-toko-insight-text-wrapper">
+                                <div class="tren-toko-insight-title blue-text">
+                                    Toko Penjualan Tertinggi
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="tren-toko-insight-box yellow-box">
+
+                        <div class="tren-toko-insight-header">
+                            <div class="tren-toko-insight-icon-wrapper yellow-icon">
+                                <div class="tren-toko-insight-icon">
+                                    <img class="tren-toko-vector" src="{{ asset('img/prendah.png') }}" alt="">
+                                </div>
+                            </div>
+
+                            <div class="tren-toko-insight-text-wrapper small">
+                                <div class="tren-toko-insight-title yellow-text">
+                                    Toko Aktif Terendah
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@endsection

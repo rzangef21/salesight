@@ -10,3 +10,7 @@ Route::get('/owner/dashboard', function () {
 Route::get('/owner/tren-global', function () {
     return view('owner.tren-penjualan-global');
 })->name('owner.tren-global');
+
+Route::get('/owner/tren-penjualan-toko', function () {
+    return view('owner.tren-penjualan-toko');
+})->name('owner.tren-toko');

@@ -64,7 +64,8 @@
                 </a>
 
                 <!-- Tren Penjualan Toko -->
-                <a href="#" class="button-2">
+                <a href="{{ route('owner.tren-toko') }}"
+                    class="{{ request()->routeIs('owner.tren-toko') ? 'button' : 'button-2' }}">
 
                     <div class="text-3">
                         <div class="icon-2">
@@ -77,6 +78,10 @@
                             Tren Penjualan Toko
                         </div>
                     </div>
+
+                    @if (request()->routeIs('owner.tren-toko'))
+                        <div class="div-4"></div>
+                    @endif
 
                 </a>
 
