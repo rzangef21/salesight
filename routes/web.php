@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+//REGISTER
+Route::get('/register', function () {
+    return view('register.register');
+})->name('register');
+
 // OWNER
 Route::get('/owner/dashboard', function () {
     return view('owner.dashboard');
