@@ -26,11 +26,10 @@
                 <div class="container-3">
 
                     <div class="icon-wrapper">
-                        <div class="icon">
-                            <img class="vector" src="{{ asset('img/register/vector-40.svg') }}">
-                            <img class="img" src="{{ asset('img/register/vector-9.svg') }}">
-                            <img class="vector-2" src="{{ asset('img/register/vector-23.svg') }}">
-                        </div>
+                        <img
+                        class="logo-image"
+                        src="{{ asset('img/logo.png') }}"
+                        alt="Logo">
                     </div>
 
                     <div class="text">
@@ -41,21 +40,7 @@
 
                 <div class="container-4">
 
-                    <div class="container-5">
-
-                        <div class="icon-2">
-                            <img class="vector-3" src="{{ asset('img/register/vector-5.svg') }}">
-                            <img class="vector-4" src="{{ asset('img/register/vector-16.svg') }}">
-                            <img class="vector-5" src="{{ asset('img/register/vector-14.svg') }}">
-                            <img class="vector-6" src="{{ asset('img/register/vector-31.svg') }}">
-                            <img class="vector-7" src="{{ asset('img/register/vector-36.svg') }}">
-                        </div>
-
-                        <div class="text-wrapper-2">
-                            Admin Mode
-                        </div>
-
-                    </div>
+                    
 
                     <div class="container-6">
 
@@ -69,6 +54,118 @@
                         </p>
 
                     </div>
+
+                    <div class="container-7">
+
+    <!-- CARD ADMIN -->
+    <div class="container-8">
+
+        <div class="container-9">
+
+            <div class="div-wrapper">
+
+                <div class="icon-3">
+                    ✓
+                </div>
+
+            </div>
+
+            <div class="container-10">
+
+                <div class="container-11">
+                    <div class="text-wrapper-4">
+                        Admin (Data Entry)
+                    </div>
+                </div>
+
+                <div class="container-12">
+                    <p class="text-wrapper-5">
+                        Input & kelola transaksi cabang
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container-13">
+
+            <div class="container-14">
+                <p class="text-wrapper-6">
+                    ✓ Input data transaksi penjualan harian
+                </p>
+            </div>
+
+            <div class="container-14">
+                <p class="text-wrapper-6">
+                    ✓ Edit & kelola daftar transaksi cabang
+                </p>
+            </div>
+
+            <div class="container-14">
+                <p class="text-wrapper-6">
+                    ✓ Akses form input produk & stok
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CARD OWNER -->
+    <div class="container-16">
+
+        <div class="container-9">
+
+            <div class="div-wrapper">
+                <div class="icon-3">
+                    ⌘
+                </div>
+            </div>
+
+            <div class="container-10">
+
+                <div class="container-11">
+                    <div class="text-wrapper-4">
+                        Owner
+                    </div>
+                </div>
+
+                <div class="container-12">
+                    <p class="text-wrapper-5">
+                        Pantau performa semua cabang
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container-13">
+
+            <div class="container-14">
+                <p class="text-wrapper-6">
+                    ✓ Dashboard analytics real-time
+                </p>
+            </div>
+
+            <div class="container-14">
+                <p class="text-wrapper-6">
+                    ✓ Pantau performa semua cabang
+                </p>
+            </div>
+
+            <div class="container-14">
+                <p class="text-wrapper-6">
+                    ✓ Laporan pendapatan otomatis
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
                 </div>
 
