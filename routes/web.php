@@ -2,19 +2,45 @@
 
 use Illuminate\Support\Facades\Route;
 
-// OWNER
-Route::get('/owner/dashboard', function () {
-    return view('owner.dashboard');
-})->name('owner.dashboard');
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/owner/tren-global', function () {
-    return view('owner.tren-penjualan-global');
-})->name('owner.tren-global');
+// LOGIN
+Route::get('/login', function () {
+    return view('login.login');
+})->name('login');
 
-Route::get('/owner/tren-penjualan-toko', function () {
-    return view('owner.tren-penjualan-toko');
-})->name('owner.tren-toko');
+// REGISTER
+Route::get('/register', function () {
+    return view('register.register');
+})->name('register');
 
-Route::get('/owner/kontribusi-toko', function () {
-    return view('owner.kontribusi-toko');
-})->name('owner.kontribusi-toko');
+
+/*
+|--------------------------------------------------------------------------
+| OWNER
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('owner')->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('owner.dashboard');
+    })->name('owner.dashboard');
+
+    Route::get('/tren-global', function () {
+        return view('owner.tren-penjualan-global');
+    })->name('owner.tren-global');
+
+    Route::get('/tren-penjualan-toko', function () {
+        return view('owner.tren-penjualan-toko');
+    })->name('owner.tren-toko');
+
+    Route::get('/kontribusi-toko', function () {
+        return view('owner.kontribusi-toko');
+    })->name('owner.kontribusi-toko');
+
+});
