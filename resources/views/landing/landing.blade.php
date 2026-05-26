@@ -16,11 +16,14 @@
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             
             <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-md shadow-blue-100 group-hover:bg-blue-700 transition">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13h1v7c0 .552.448 1 1 1h2c.552 0 1-.448 1-1v-7h1m-6 0V7a1 1 0 011-1h2a1 1 0 011 1v6m-4 0h4m2 0h1v4c0 .552.448 1 1 1h2c.552 0 1-.448 1-1v-4h1m-6 0V5a1 1 0 011-1h2a1 1 0 011 1v8m-4 0h4m2 0h1v2c0 .552.448 1 1 1h2c.552 0 1-.448 1-1v-2h1m-6 0V11a1 1 0 011-1h2a1 1 0 011 1v2m-4 0h4"></path>
-                    </svg>
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-md shadow-blue-100 group-hover:bg-blue-700 transition overflow-hidden">
+                    <img 
+                        src="{{ asset('img/logo.png') }}" 
+                        alt="Salesight Logo"
+                        class="w-6 h-6 object-contain"
+                    >
                 </div>
+            
                 <span class="text-xl font-extrabold text-[#0B132B] tracking-tight">
                     Salesight
                 </span>
