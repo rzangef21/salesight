@@ -79,51 +79,70 @@
                     <div class="kontribusi-chart-placeholder"></div>
 
                     <!-- Legend -->
+                    @foreach($data as $item)
+
                     <div class="kontribusi-legend">
+                        <div class="table-responsive mt-4">
 
-                        <div class="kontribusi-legend-row">
-                            <div class="kontribusi-legend-color-blue"></div>
-                            <div class="kontribusi-legend-name">Toko Jakarta Pusat</div>
-                            <div class="kontribusi-legend-percent">29.7%</div>
-                            <div class="kontribusi-legend-value">Rp654.400.000</div>
-                        </div>
+    <table class="table table-bordered align-middle">
 
-                        <div class="kontribusi-legend-row">
-                            <div class="kontribusi-legend-color-green"></div>
-                            <div class="kontribusi-legend-name">Toko Bandung Kota</div>
-                            <div class="kontribusi-legend-percent">22.2%</div>
-                            <div class="kontribusi-legend-value">Rp488.000.000</div>
-                        </div>
+        <thead>
+            <tr>
+                <th>Ranking</th>
+                <th>Nama Toko</th>
+                <th>Kontribusi</th>
+                <th>Total Sales</th>
+                <th>Score EDAS</th>
+            </tr>
+        </thead>
 
-                        <div class="kontribusi-legend-row">
-                            <div class="kontribusi-legend-color-yellow"></div>
-                            <div class="kontribusi-legend-name">Toko Surabaya</div>
-                            <div class="kontribusi-legend-percent">25.2%</div>
-                            <div class="kontribusi-legend-value">Rp555.000.000</div>
-                        </div>
+        <tbody>
 
-                        <div class="kontribusi-legend-row">
-                            <div class="kontribusi-legend-color-red"></div>
-                            <div class="kontribusi-legend-name">Toko Yogyakarta</div>
-                            <div class="kontribusi-legend-percent">3.1%</div>
-                            <div class="kontribusi-legend-value">Rp69.000.000</div>
-                        </div>
+            @foreach($data as $item)
 
-                        <div class="kontribusi-legend-row">
-                            <div class="kontribusi-legend-color-purple"></div>
-                            <div class="kontribusi-legend-name">Toko Medan</div>
-                            <div class="kontribusi-legend-percent">19.8%</div>
-                            <div class="kontribusi-legend-value">Rp435.000.000</div>
-                        </div>
+            <tr>
+
+                <td>
+                    {{ $item->ranking_position }}
+                </td>
+
+                <td>
+                    {{ $item->shopping_mall }}
+                </td>
+
+                <td>
+                    {{ number_format($item->persentase, 1) }}%
+                </td>
+
+                <td>
+                    Rp{{ number_format($item->total_sales, 0, ',', '.') }}
+                </td>
+
+                <td>
+                    {{ number_format($item->appraisal_score, 4) }}
+                </td>
+
+            </tr>
+
+            @endforeach
+
+        </tbody>
+
+    </table>
+
+</div>
 
                         <div class="kontribusi-legend-total">
                             <div class="kontribusi-legend-color-black"></div>
                             <div class="kontribusi-total-name">Total</div>
                             <div class="kontribusi-total-percent">100%</div>
-                            <div class="kontribusi-total-value">Rp2.201.400.000</div>
+                            <div class="kontribusi-total-value">
+                                Rp{{ number_format($totalSales, 0, ',', '.') }}
+                            </div>
                         </div>
 
                     </div>
+                    @endforeach
 
                 </div>
             </div>
@@ -142,15 +161,21 @@
                     </div>
 
                     <div class="kontribusi-biggest-text">
-                        <div class="kontribusi-store-name">Toko Jakarta Pusat</div>
+                        <div class="kontribusi-store-name">
+                            {{ $best->shopping_mall }}
+                        </div>
                         <div class="kontribusi-percent-wrapper">
-                            <div class="kontribusi-percent-blue">29.7%</div>
+                            <div class="kontribusi-percent-blue">
+                                {{ number_format($best->persentase, 1) }}%
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="kontribusi-amount-wrapper">
-                    <div class="kontribusi-amount">Rp654.400.000</div>
+                    <div class="kontribusi-amount">
+                        Rp{{ number_format($best->total_sales, 0, ',', '.') }}
+                    </div>
                 </div>
 
                 <div class="kontribusi-progress-wrapper">
@@ -172,15 +197,21 @@
                     </div>
 
                     <div class="kontribusi-smallest-text">
-                        <div class="kontribusi-store-name-small">Toko Yogyakarta</div>
+                        <div class="kontribusi-store-name-small">
+                            {{ $worst->shopping_mall }}
+                        </div>
                         <div class="kontribusi-percent-wrapper">
-                            <div class="kontribusi-percent-gray">3.1%</div>
+                            <div class="kontribusi-percent-gray">
+                                {{ number_format($worst->persentase, 1) }}%
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="kontribusi-amount-wrapper">
-                    <div class="kontribusi-amount-small">Rp69.000.000</div>
+                    <div class="kontribusi-amount-small">
+                        Rp{{ number_format($worst->total_sales, 0, ',', '.') }}
+                    </div>
                 </div>
 
                 <div class="kontribusi-progress-gray"></div>
@@ -197,7 +228,9 @@
                         <div class="kontribusi-summary-label">Total Penjualan</div>
                     </div>
                     <div class="kontribusi-summary-value-wrap">
-                        <div class="kontribusi-summary-value">Rp2.201.400.000</div>
+                        <div class="kontribusi-summary-value">
+                            Rp{{ number_format($totalSales, 0, ',', '.') }}
+                        </div>
                     </div>
                 </div>
 
@@ -206,7 +239,9 @@
                         <div class="kontribusi-summary-label-single">Jumlah Cabang</div>
                     </div>
                     <div class="kontribusi-summary-value-wrap-2">
-                        <div class="kontribusi-summary-value">5 cabang</div>
+                        <div class="kontribusi-summary-value">
+                            {{ $jumlahCabang }} cabang
+                        </div>
                     </div>
                 </div>
 
@@ -224,7 +259,9 @@
                         <div class="kontribusi-summary-label">Rata-rata per Cabang</div>
                     </div>
                     <div class="kontribusi-summary-value-wrap-4">
-                        <div class="kontribusi-summary-value">Rp440.280.000</div>
+                        <div class="kontribusi-summary-value">
+                            Rp{{ number_format($rataRataCabang, 0, ',', '.') }}
+                        </div>
                     </div>
                 </div>
             </div>
