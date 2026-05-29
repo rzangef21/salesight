@@ -411,6 +411,26 @@ class EdasController extends Controller
 
         /*
         |--------------------------------------------------------------------------
+        | Tampilan Visualisasi
+        |--------------------------------------------------------------------------
+        */
+
+        $chartLabels = $data->pluck('shopping_mall');
+        $chartScores = $data->pluck('appraisal_score');
+
+        $chartLabels = $data
+            ->pluck('shopping_mall')
+            ->toArray();
+
+        $chartScores = $data
+            ->pluck('appraisal_score')
+            ->map(function ($score) {
+                return round($score, 4);
+            })
+            ->toArray();
+
+        /*
+        |--------------------------------------------------------------------------
         | Return view
         |--------------------------------------------------------------------------
         */
@@ -425,7 +445,9 @@ class EdasController extends Controller
                 'jumlahCabang',
                 'rataRataCabang',
                 'tahun',
-                'tahunList'
+                'tahunList',
+                'chartLabels',
+                'chartScores'
             )
         );
     }

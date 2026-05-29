@@ -49,7 +49,9 @@
                     </div>
 
                     <!-- Area chart placeholder -->
-                    <div class="kontribusi-chart-placeholder"></div>
+                    <div class="kontribusi-chart-placeholder">
+                        <canvas id="edasChart"></canvas>
+                    </div>
 
                     <!-- Ranking Toko -->
                     <div class="kontribusi-ranking-list">
@@ -224,5 +226,61 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('scripts')
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const ctx = document.getElementById('edasChart');
+
+    console.log(ctx);
+
+    new Chart(ctx, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: @json($chartLabels),
+
+            datasets: [{
+                label: 'Score EDAS',
+                data: @json($chartScores),
+                borderWidth: 1
+            }]
+        },
+
+        options: {
+
+            indexAxis: 'y',
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    max: 1
+                }
+            }
+        }
+    });
+
+});
+
+</script>
 
 @endsection

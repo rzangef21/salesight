@@ -311,6 +311,13 @@
   width: 525px;
   height: 254px;
   background-color: #f0f6ff;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#edasChart {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .kontribusi-legend {
