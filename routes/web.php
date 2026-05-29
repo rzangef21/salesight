@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EdasController;
 
 
 // Landing Page
@@ -45,8 +46,18 @@ Route::prefix('owner')->group(function () {
         return view('owner.tren-penjualan-toko');
     })->name('owner.tren-toko');
 
-    Route::get('/kontribusi-toko', function () {
-        return view('owner.kontribusi-toko');
-    })->name('owner.kontribusi-toko');
+    Route::get(
+        '/owner/kontribusi-toko/{tahun?}',
+        [EdasController::class, 'kontribusiToko']
+    )->name('owner.kontribusi-toko');
 
 });
+
+/*
+|--------------------------------------------------------------------------
+| EDAS
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/proses-edas/{tahun}',
+    [EdasController::class, 'prosesEdas']);

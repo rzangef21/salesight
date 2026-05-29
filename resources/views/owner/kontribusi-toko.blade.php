@@ -31,99 +31,84 @@
 
                     <!-- Dropdown periode -->
                     <div class="kontribusi-filter-frame">
-                        <div class="kontribusi-filter-button">
-                            <img class="kontribusi-filter-icon" src="{{ asset('img/toko.png') }}" />
-                            <div class="kontribusi-filter-text">
-                                <div class="kontribusi-filter-label">Periode Tahun</div>
-                            </div>
-                            <img class="kontribusi-filter-icon" src="{{ asset('img/dropdown.png') }}" />
-                        </div>
-
-                        <div class="kontribusi-dropdown">
-                            <div class="kontribusi-dropdown-active">
-                                <div class="kontribusi-dot-blue"></div>
-                                <div class="kontribusi-dropdown-active-text">Semua Cabang</div>
-                                <div class="kontribusi-check-wrapper">
-                                    <img class="kontribusi-check-icon" src="{{ asset('img/vector-5.svg') }}" />
-                                </div>
-                            </div>
-
-                            <div class="kontribusi-dropdown-item">
-                                <div class="kontribusi-dot-blue"></div>
-                                <div class="kontribusi-dropdown-text">Toko Jakarta Pusat</div>
-                            </div>
-
-                            <div class="kontribusi-dropdown-item">
-                                <div class="kontribusi-dot-green"></div>
-                                <div class="kontribusi-dropdown-text">Toko Bandung Kota</div>
-                            </div>
-
-                            <div class="kontribusi-dropdown-item">
-                                <div class="kontribusi-dot-yellow"></div>
-                                <div class="kontribusi-dropdown-text">Toko Surabaya</div>
-                            </div>
-
-                            <div class="kontribusi-dropdown-item">
-                                <div class="kontribusi-dot-red"></div>
-                                <div class="kontribusi-dropdown-text">Toko Yogyakarta</div>
-                            </div>
-
-                            <div class="kontribusi-dropdown-item">
-                                <div class="kontribusi-dot-purple"></div>
-                                <div class="kontribusi-dropdown-text">Toko Medan</div>
-                            </div>
-                        </div>
+                        <form method="GET"
+                            action="{{ route('owner.kontribusi-toko') }}">
+                            <select
+                                name="tahun"
+                                onchange="this.form.submit()"
+                                class="form-select">
+                                @foreach($tahunList as $itemTahun)
+                                    <option
+                                        value="{{ $itemTahun }}"
+                                        {{ $tahun == $itemTahun ? 'selected' : '' }}>
+                                        {{ $itemTahun }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </form>
                     </div>
 
                     <!-- Area chart placeholder -->
-                    <div class="kontribusi-chart-placeholder"></div>
-
-                    <!-- Legend -->
-                    <div class="kontribusi-legend">
-
-                        <div class="kontribusi-legend-row">
-                            <div class="kontribusi-legend-color-blue"></div>
-                            <div class="kontribusi-legend-name">Toko Jakarta Pusat</div>
-                            <div class="kontribusi-legend-percent">29.7%</div>
-                            <div class="kontribusi-legend-value">Rp654.400.000</div>
-                        </div>
-
-                        <div class="kontribusi-legend-row">
-                            <div class="kontribusi-legend-color-green"></div>
-                            <div class="kontribusi-legend-name">Toko Bandung Kota</div>
-                            <div class="kontribusi-legend-percent">22.2%</div>
-                            <div class="kontribusi-legend-value">Rp488.000.000</div>
-                        </div>
-
-                        <div class="kontribusi-legend-row">
-                            <div class="kontribusi-legend-color-yellow"></div>
-                            <div class="kontribusi-legend-name">Toko Surabaya</div>
-                            <div class="kontribusi-legend-percent">25.2%</div>
-                            <div class="kontribusi-legend-value">Rp555.000.000</div>
-                        </div>
-
-                        <div class="kontribusi-legend-row">
-                            <div class="kontribusi-legend-color-red"></div>
-                            <div class="kontribusi-legend-name">Toko Yogyakarta</div>
-                            <div class="kontribusi-legend-percent">3.1%</div>
-                            <div class="kontribusi-legend-value">Rp69.000.000</div>
-                        </div>
-
-                        <div class="kontribusi-legend-row">
-                            <div class="kontribusi-legend-color-purple"></div>
-                            <div class="kontribusi-legend-name">Toko Medan</div>
-                            <div class="kontribusi-legend-percent">19.8%</div>
-                            <div class="kontribusi-legend-value">Rp435.000.000</div>
-                        </div>
-
-                        <div class="kontribusi-legend-total">
-                            <div class="kontribusi-legend-color-black"></div>
-                            <div class="kontribusi-total-name">Total</div>
-                            <div class="kontribusi-total-percent">100%</div>
-                            <div class="kontribusi-total-value">Rp2.201.400.000</div>
-                        </div>
-
+                    <div class="kontribusi-chart-placeholder">
+                        <canvas id="edasChart"></canvas>
                     </div>
+
+                    <!-- Ranking Toko -->
+                    <div class="kontribusi-ranking-list">
+
+                        @foreach($data as $item)
+
+                        <div class="kontribusi-ranking-item">
+
+                            <div class="kontribusi-ranking-left">
+
+                                <div class="kontribusi-ranking-number">
+                                    #{{ $item->ranking_position }}
+                                </div>
+
+                                <div class="kontribusi-ranking-info">
+
+                                    <div class="kontribusi-ranking-name">
+                                        {{ $item->shopping_mall }}
+                                    </div>
+
+                                    <div class="kontribusi-ranking-score">
+                                        Score EDAS:
+                                        {{ number_format($item->appraisal_score, 4) }}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="kontribusi-ranking-right">
+
+                                <div class="kontribusi-ranking-percent">
+                                    {{ number_format($item->persentase, 1) }}%
+                                </div>
+
+                                <div class="kontribusi-ranking-sales">
+                                    Rp{{ number_format($item->total_sales, 0, ',', '.') }}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        @endforeach
+
+    <!-- Total -->
+    <div class="kontribusi-ranking-total">
+
+        <div>Total Penjualan</div>
+
+        <div>
+            Rp{{ number_format($totalSales, 0, ',', '.') }}
+        </div>
+
+    </div>
+
+</div>
 
                 </div>
             </div>
@@ -142,15 +127,21 @@
                     </div>
 
                     <div class="kontribusi-biggest-text">
-                        <div class="kontribusi-store-name">Toko Jakarta Pusat</div>
+                        <div class="kontribusi-store-name">
+                            {{ $best->shopping_mall }}
+                        </div>
                         <div class="kontribusi-percent-wrapper">
-                            <div class="kontribusi-percent-blue">29.7%</div>
+                            <div class="kontribusi-percent-blue">
+                                {{ number_format($best->persentase, 1) }}%
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="kontribusi-amount-wrapper">
-                    <div class="kontribusi-amount">Rp654.400.000</div>
+                    <div class="kontribusi-amount">
+                        Rp{{ number_format($best->total_sales, 0, ',', '.') }}
+                    </div>
                 </div>
 
                 <div class="kontribusi-progress-wrapper">
@@ -172,15 +163,21 @@
                     </div>
 
                     <div class="kontribusi-smallest-text">
-                        <div class="kontribusi-store-name-small">Toko Yogyakarta</div>
+                        <div class="kontribusi-store-name-small">
+                            {{ $worst->shopping_mall }}
+                        </div>
                         <div class="kontribusi-percent-wrapper">
-                            <div class="kontribusi-percent-gray">3.1%</div>
+                            <div class="kontribusi-percent-gray">
+                                {{ number_format($worst->persentase, 1) }}%
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="kontribusi-amount-wrapper">
-                    <div class="kontribusi-amount-small">Rp69.000.000</div>
+                    <div class="kontribusi-amount-small">
+                        Rp{{ number_format($worst->total_sales, 0, ',', '.') }}
+                    </div>
                 </div>
 
                 <div class="kontribusi-progress-gray"></div>
@@ -197,7 +194,9 @@
                         <div class="kontribusi-summary-label">Total Penjualan</div>
                     </div>
                     <div class="kontribusi-summary-value-wrap">
-                        <div class="kontribusi-summary-value">Rp2.201.400.000</div>
+                        <div class="kontribusi-summary-value">
+                            Rp{{ number_format($totalSales, 0, ',', '.') }}
+                        </div>
                     </div>
                 </div>
 
@@ -206,16 +205,9 @@
                         <div class="kontribusi-summary-label-single">Jumlah Cabang</div>
                     </div>
                     <div class="kontribusi-summary-value-wrap-2">
-                        <div class="kontribusi-summary-value">5 cabang</div>
-                    </div>
-                </div>
-
-                <div class="kontribusi-summary-row kontribusi-summary-row-mid">
-                    <div class="kontribusi-summary-label-wrap-3">
-                        <div class="kontribusi-summary-label-single">Cabang Aktif</div>
-                    </div>
-                    <div class="kontribusi-summary-value-wrap-3">
-                        <div class="kontribusi-summary-value">4 cabang</div>
+                        <div class="kontribusi-summary-value">
+                            {{ $jumlahCabang }} cabang
+                        </div>
                     </div>
                 </div>
 
@@ -224,7 +216,9 @@
                         <div class="kontribusi-summary-label">Rata-rata per Cabang</div>
                     </div>
                     <div class="kontribusi-summary-value-wrap-4">
-                        <div class="kontribusi-summary-value">Rp440.280.000</div>
+                        <div class="kontribusi-summary-value">
+                            Rp{{ number_format($rataRataCabang, 0, ',', '.') }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -232,5 +226,61 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('scripts')
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const ctx = document.getElementById('edasChart');
+
+    console.log(ctx);
+
+    new Chart(ctx, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: @json($chartLabels),
+
+            datasets: [{
+                label: 'Score EDAS',
+                data: @json($chartScores),
+                borderWidth: 1
+            }]
+        },
+
+        options: {
+
+            indexAxis: 'y',
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    max: 1
+                }
+            }
+        }
+    });
+
+});
+
+</script>
 
 @endsection
